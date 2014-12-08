@@ -113,14 +113,17 @@ module.exports = (grunt) ->
             indexTemplate = grunt.file.read 'templates/_index.html'
             sectionTemplate = grunt.file.read 'templates/_section.html'
             slides = grunt.file.readJSON 'slides/list.json'
+            getId = (filename) ->
+                filename.toLowerCase().replace('/', '-').split('.')[0]
 
             html = grunt.template.process indexTemplate, data:
-                slides:
-                    slides
+                getId: getId
+                slides: slides
                 section: (slide) ->
                     grunt.template.process sectionTemplate, data:
-                        slide:
-                            slide
+                        getId: getId
+                        slide: slide
+
             grunt.file.write 'index.html', html
 
     grunt.registerTask 'test',
