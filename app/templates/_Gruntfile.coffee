@@ -108,8 +108,7 @@ module.exports = (grunt) ->
     require('load-grunt-tasks')(grunt)
 
     grunt.registerTask 'buildIndex',
-        'Build index.html from templates/_index.html and slides/list.json.',
-        ->
+        'Build index.html from templates/_index.html and slides/list.json.', ->
             indexTemplate = grunt.file.read 'templates/_index.html'
             sectionTemplate = grunt.file.read 'templates/_section.html'
             slides = grunt.file.readJSON 'slides/list.json'
